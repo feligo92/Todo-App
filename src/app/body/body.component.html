@@ -22,7 +22,7 @@
 
             <div class="row taskRow mb-3" *ngFor="let task of userTasks; let i = index">
                 <div class="col-12">
-                    <p>{{task}}<i class="fas fa-trash float-right trashIcon" (click)="changeSelectedTask(i)" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;"></i>
+                    <p><span class="font-weight-bold">{{task["task"]}}</span><span class="text-muted "> {{formatTime(task["timestamp"])}}</span><span class="text-muted "> -Since {{(task["timestamp"])}}</span><i class="fas fa-trash float-right trashIcon" (click)="changeSelectedTask(i)" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;"></i>
                     </p>
                 </div>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-body',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  userTasks: string[] = [];
+  userTasks: object[] = [];
 
-  selectedTask:number = -1;
+  selectedTask: number = -1;
 
 
-  constructor() { 
+  constructor() {
     
+
     let tareasLocalStorage = JSON.parse(localStorage.getItem("tasks"));
     this.userTasks = (tareasLocalStorage != null ? tareasLocalStorage : []);
   }
@@ -21,33 +23,37 @@ export class BodyComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeSelectedTask(index){
+  changeSelectedTask(index) {
     this.selectedTask = index;
+  }
+
+  formatTime(timestamp: number): string {
+    return moment(timestamp).fromNow();
   }
 
   addTask() {
 
-    
+
 
     let task: string = (<HTMLInputElement>document.querySelector("#myInput")).value;
 
-    if(task != ""){
-      this.userTasks.push(task)
+    if (task !== '') {
+      this.userTasks.push({"task":task, "date": moment().format("LLL"),"timestamp": moment().format() })
     }
     (<HTMLInputElement>document.querySelector("#myInput")).value = "";
 
-    if (typeof(Storage) !== 'undefined') {
+    if (typeof (Storage) !== 'undefined') {
       localStorage.setItem("tasks", JSON.stringify(this.userTasks))
-    } 
+    }
   }
 
-  removeTask(index:number):void {
+  removeTask(index: number): void {
 
-    this.userTasks.splice(index,1)
-    
-    if (typeof(Storage) !== 'undefined') {
+    this.userTasks.splice(index, 1)
+
+    if (typeof (Storage) !== 'undefined') {
       localStorage.setItem("tasks", JSON.stringify(this.userTasks))
-    } 
+    }
   }
 
 
