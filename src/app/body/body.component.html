@@ -1,0 +1,53 @@
+<div class="container bg-light myContainer ">
+    <div class="row ">
+        <div class="col-6 offset-3 ">
+            <div class="row headerRow">
+                <div class="col-12">
+
+                    <h2 class="text-center text-warning mb-2">Todo App</h2>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <input type="text" class="form-control" id="myInput" placeholder="New Task">
+                        </div>
+                        <div class="col-2">
+                            <button type="button" (click)="addTask()" id="plusButton"
+                                class="btn btn-warning rounded-circle"><i
+                                    class="fas fa-plus text-light display-4"></i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row taskRow mb-3" *ngFor="let task of userTasks; let i = index">
+                <div class="col-12">
+                    <p>{{task}}<i class="fas fa-trash float-right trashIcon" (click)="changeSelectedTask(i)" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;"></i>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><img style="width:100%;" src="https://e.radio-oxigeno.io/normal/2019/06/20/265226_804664.jpg"></h5>
+                <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ara you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="removeTask(selectedTask)" data-dismiss="modal">Don't stop me now....oooooh I want to Delete (with Queen's music)</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

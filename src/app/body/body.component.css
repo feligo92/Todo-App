@@ -1,0 +1,21 @@
+#plusButton{
+    position: absolute;
+    left: -4vw;
+    width: 85px;
+    height: 85px;
+    top: -3vh;
+}
+.headerRow{
+    margin-bottom: 6vh;
+    padding-left: 4vw;
+}
+.taskRow{
+    padding-right: 4vw;
+    padding-left: 4vw;
+    padding-top: 2vh;
+    background-color:white;
+    border-left: 5px solid orange;
+}
+.myContainer{
+    height: 100vh;
+}
